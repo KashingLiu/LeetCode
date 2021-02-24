@@ -37,5 +37,6 @@ public class Q104_0223 {
                 size--;
             }
         }
+        return 1;
     }
 }
