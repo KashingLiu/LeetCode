@@ -9,13 +9,23 @@ public class Q257_0302 {
         helper(new StringBuilder(), root);
         return answer;
     }
-    public void helper(StringBuilder temp, TreeNode node) {
-        if (node == null) {
-            answer.add(temp.toString());
-            temp = new StringBuilder();
+    public void helper(StringBuilder temp, TreeNode root) {
+        if (root.left == null && root.right == null) {
+            temp.append("->").append(root.val);
+            answer.add(new String(temp));
+            temp.delete(0, temp.length() - 1);
+            return;
         }
-        temp.append("->"+node.val);
-        helper(temp, node.left);
-        helper(temp, node.right);
+        if (temp.toString().equals("")) {
+            temp.append(root.val);
+        } else {
+            temp.append("->").append(root.val);
+        }
+        if (root.left != null) {
+            helper(temp, root.left);
+        }
+        if (root.right != null) {
+            helper(temp, root.right);
+        }
     }
 }
